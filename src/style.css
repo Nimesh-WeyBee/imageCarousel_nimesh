@@ -1,0 +1,271 @@
+:root {
+  /* colors priamry */
+  --clr-netural-100: hsla(0, 0%, 100%, 1);
+  --clr-netural-200: hsla(353, 17%, 9%, 0.8);
+
+  /* font weight */
+  --fw-bold: 900;
+  --fw-semi-bold: 700;
+  --fw-regular: 500;
+
+  /* font sizes */
+  --fs-900: 4.75rem; /* 76 */
+  --fs-850: 4.375rem; /* 70 */
+  --fs-800: 3.25rem; /* 52 */
+  --fs-700: 1.5rem; /* 24 */
+
+  --fs-primary-heading: var(--fs-900);
+  --fs-secondary-heading: var(--fs-800);
+  --fs-price: var(--fs-850);
+  --fs-body: var(--fs-700);
+
+  /* Font family */
+  --ff-primary: "Poppins", sans-serif; /* for body*/
+  --ff-secondary: "Sofia Sans", sans-serif; /* for headings */
+
+  --ff-heading: var(--ff-secondary);
+  --ff-body: var(--ff-primary);
+
+  /* Product specific colors */
+  --linear-greadent_product-one: linear-gradient(
+    105.54deg,
+    #f4a764 -2.93%,
+    #ffdec2 72.14%
+  );
+  --linear-greadent_product-two: linear-gradient(
+    105.54deg,
+    #adb0b0 -2.93%,
+    #e1e1e1 72.14%
+  );
+  --linear-greadent_product-three: linear-gradient(
+    105.54deg,
+    #30a357 -2.93%,
+    #75e39a 72.14%
+  );
+  --linear-greadent_product-four: linear-gradient(
+    105.54deg,
+    #f24f4f -2.93%,
+    #ffa895 72.14%
+  );
+}
+
+/* CSS RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom CSS */
+
+.button-signup {
+  border-radius: 999px;
+  width: 92px;
+  height: 36px;
+  background: var(--clr-netural-200);
+}
+
+/* Header */
+
+header {
+  font-family: var(--ff-body);
+  display: grid;
+  grid-template-columns: 1fr 0.75fr 0.25fr;
+  align-items: center;
+  gap: 20px;
+  height: min-content;
+}
+
+.header-nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.signup-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* BODY */
+
+.body-container {
+  padding: 3.1875rem 9.6875rem;
+}
+
+/* Main */
+main {
+  font-family: var(--ff-body);
+}
+
+/* Products */
+.product-heading,
+.product-subHeading {
+  font-family: var(--ff-heading);
+}
+
+/* Utility classes */
+
+/* Glass effect */
+
+.glass_effect {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+/* Text colors */
+.text-neturla-100 {
+  color: var(--clr-netural-100);
+}
+.text-neturla-200 {
+  color: var(--clr-netural-200);
+}
+
+/* background colors */
+.bg-netural-100 {
+  background: var(--clr-netural-100);
+}
+.bg-netural-200 {
+  background: var(--clr-netural-200);
+}
+
+/* Font weight */
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+.fw-semi-bold {
+  font-weight: var(--fw-semi-bold);
+}
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+/* Font size */
+.fs-primary-heading {
+  font-size: var(--fs-primary-heading);
+  line-height: 1.1;
+}
+.fs-secondary-heading {
+  font-size: var(--fs-secondary-heading);
+  line-height: 1.1;
+}
+.fs-body {
+  font-size: var(--fs-body);
+}
+.fs-price {
+  font-size: var(--fs-price);
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+.fs-850 {
+  font-size: var(--fs-850);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+/* Product specifick colors */
+.product-1-linearGreadent {
+  background-image: var(--linear-greadent_product-one);
+}
+.product-2-linearGreadent {
+  background-image: var(--linear-greadent_product-two);
+}
+.product-3-linearGreadent {
+  background-image: var(--linear-greadent_product-three);
+}
+.product-4-linearGreadent {
+  background-image: var(--linear-greadent_product-four);
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+
+/* Removing list styles */
+
+.list-style-type-none{
+    list-style-type: none;
+}
