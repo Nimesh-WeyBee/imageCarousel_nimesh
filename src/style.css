@@ -748,3 +748,9 @@ header {
     margin-inline: auto;
   }
 }
+
+@media (max-width: 400px) {
+  .navigation-btn {
+    display: none;
+  }
+}
