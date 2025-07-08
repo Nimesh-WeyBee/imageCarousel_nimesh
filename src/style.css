@@ -134,6 +134,12 @@ select {
 
 /* Custom CSS */
 
+.haeder-logoWrapper:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
 .button-signup {
   border-radius: 999px;
   width: 5.75rem;
@@ -160,10 +166,27 @@ header {
   padding: 0;
 }
 
+.header-nav-list > *:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
 .signup-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.signup-wrapper > * {
+  border: none;
+}
+
+.signup-wrapper > *:hover {
+  opacity: 0.8;
+  scale: 1.05;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
 /* BODY */
@@ -284,12 +307,20 @@ header {
   right: 0;
 }
 
+.navigation-btn:hover {
+  /* transform: scale(1.1); */
+  opacity: 1;
+  transition: all 0.2s;
+}
+
 .productImage {
   position: absolute;
   /* transition: left 1s ease; */
-  animation: slideInOut 5s ease-out;
-  /* animation: slideInOut 3s cubic-bezier(0.4, 0, 1, 1.27); */
-  /* animation-delay: .2s; */
+}
+
+/* Add this class for dynamic animation */
+.slideIn {
+  animation: slideOut 1s ease-out;
 }
 
 .product-image_wrapper::after {
@@ -325,6 +356,7 @@ header {
   height: 3.75rem;
   width: 3.75rem;
 }
+
 
 /* Animations */
 
@@ -363,18 +395,25 @@ header {
 
 /* slide in out */
 
-@keyframes slideInOut {
+@keyframes slideIn {
+  0% {
+    scale: 0.8;
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes slideOut {
   0% {
     scale: 1;
     opacity: 1;
   }
-  75% {
-    opacity: .5;
-    scale: .8;
-  }
   100% {
-    scale: 1;
-    opacity: 0;
+    opacity: 0.5;
+    scale: 0.8;
   }
 }
 
@@ -488,11 +527,6 @@ header {
 
 .activeImage {
   position: relative;
-  animation: slideInOut 5s ease-in;
-  /* left: 0; */
-  /* opacity: 1; */
-  /* animation: slideInOut 1s cubic-bezier(0.4, 0, 1, 1.27); */
-  /* animation: floating 2s ease-in-out infinite; */
 }
 
 .activeBackground {

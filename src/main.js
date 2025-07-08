@@ -32,6 +32,13 @@ initProductImagesPositions();
 
 function activeProductImage() {
   productImage.forEach((img, index) => {
+    // Remove previous animation class if present
+    img.classList.remove("slideIn");
+    // Force reflow to restart animation
+    void img.offsetWidth;
+    // Add animation class
+    img.classList.add("slideIn");
+
     const duration = 1000;
     const startLeft = parseFloat(img.style.left) || 0; // fallback to 0 if not set
     const targetLeft = (index - (current_product - 1)) * 100;
@@ -43,19 +50,21 @@ function activeProductImage() {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1); // cap at 1
 
-      // Apply easing (ease-in-out example)
       const ease =
         progress < 0.5
           ? 2 * progress * progress
           : -1 + (4 - 2 * progress) * progress;
 
       const currentLeft = startLeft + (targetLeft - startLeft) * ease;
-      img.style.left = `${currentLeft}dvh`;
+      img.style.left = `${currentLeft}dvw`; // <-- fix typo here
 
       if (elapsed < duration) {
         requestAnimationFrame(animate);
       } else {
-        img.style.left = `${targetLeft}dvh`; // Ensure exact final position
+        img.style.left = `${targetLeft}dvw`; // <-- fix typo here
+        // Remove animation class after animation ends
+        img.classList.remove("slideIn");
+        // img.classList.remove("activeImage");
       }
     }
 
@@ -71,7 +80,9 @@ function showProduct(oldId, newId) {
   const productHeading = document.querySelector(".product-heading");
   const productDescription = document.querySelector(".product-description");
 
+  // setTimeout(() => {
   old_productContainer.classList.remove("activeImage");
+  // }, );
   // old_productContainer.style.left = "100dvw"; // Move the old product out of view
 
   // productImage.src = `./images/product_${current_product}.jpg`;
@@ -111,3 +122,27 @@ function previousProduct() {
 }
 nextBtn.addEventListener("click", nextProduct);
 preBtn.addEventListener("click", previousProduct);
+
+// Touch Listener for swipe gestures
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const imageContainer = document.querySelector(".product-image_wrapper");
+
+imageContainer.addEventListener("touchstart", (event) => {
+  touchStartX = event.changedTouches[0].clientX;
+});
+imageContainer.addEventListener("touchend", (event) => {
+  touchEndX = event.changedTouches[0].clientX;
+  handleSwipeGesture();
+});
+function handleSwipeGesture() {
+  if (touchEndX < touchStartX) {
+    // Swipe left
+    nextProduct();
+  } else if (touchEndX > touchStartX) {
+    // Swipe right
+    previousProduct();
+  }
+}
