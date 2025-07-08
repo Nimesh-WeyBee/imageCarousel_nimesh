@@ -7,7 +7,7 @@ let current_product = 1;
 const nextBtn = document.querySelector(".next__btn");
 const preBtn = document.querySelector(".previous__btn");
 const product_background = document.querySelectorAll(".product_linearGradient");
-const productImage = document.getElementsByClassName("productImage");
+const productImage = document.querySelectorAll(".productImage");
 
 function activeBackground() {
   product_background.forEach((bg, index) => {
@@ -19,25 +19,48 @@ function activeBackground() {
   });
 }
 
+// initiate image positions
+
+function initProductImagesPositions() {
+  productImage.forEach((img, index) => {
+    img.style.left = `${index * 100}dvh`;
+  });
+}
+initProductImagesPositions();
+
+// Move images next and pre
+
+function activeProductImage() {
+  productImage.forEach((img, index) => {
+    img.style.left = `${(index - (current_product - 1)) * 100}dvh`;
+  });
+}
+
 function showProduct(oldId, newId) {
   const old_productContainer = document.querySelector(`.product-${oldId}`);
   const new_productContainer = document.querySelector(`.product-${newId}`);
 
-  const productImage = document.querySelector(".productImage");
+  const productImage = document.querySelectorAll(".productImage");
   const productHeading = document.querySelector(".product-heading");
   const productDescription = document.querySelector(".product-description");
 
   old_productContainer.classList.remove("activeImage");
+  // old_productContainer.style.left = "100dvh"; // Move the old product out of view
 
   // productImage.src = `./images/product_${current_product}.jpg`;
   // productHeading.textContent = `Product ${current_product}`;
   // productDescription.textContent = `This is the description for Product ${current_product}.`;
 
   new_productContainer.classList.add("activeImage");
+  // new_productContainer.style.left = "0"; // Bring the new product into view
 
-  setTimeout(() => {
-    activeBackground();
-  }, 500);
+  // setTimeout(() => {
+  activeProductImage();
+  // }, 50);
+
+  // setTimeout(() => {
+  activeBackground();
+  // }, 100);
 
   // body.dataset.productId = newId;
 }
