@@ -136,8 +136,8 @@ select {
 
 .button-signup {
   border-radius: 999px;
-  width: 92px;
-  height: 36px;
+  width: 5.75rem;
+  height: 2.25rem;
   background: var(--clr-netural-200);
 }
 
@@ -148,7 +148,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 0.75fr 0.25fr;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   height: min-content;
 }
 
@@ -200,7 +200,7 @@ header {
   align-items: center;
   justify-content: center;
 
-  margin-top: 144px;
+  margin-top: 9rem;
 
   grid-column-gap: 8%;
 }
@@ -244,11 +244,36 @@ header {
   justify-content: space-between;
 
   overflow: hidden;
+
+  margin-inline: auto;
 }
 
 .product-image_wrapper > * {
   display: inline-block;
 }
+
+.navigation-btn{
+  cursor: pointer;
+  width: 3.75rem;
+  height: 3.75rem;
+  background: transparent;
+  border: none;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  opacity: 0.8;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.previous__btn {
+  left: 0;
+}
+.next__btn {
+  right: 0;
+}
+
 
 .productImage {
   position: absolute;
@@ -264,7 +289,7 @@ header {
   bottom: 3%;
   left: 50%;
   width: 16%;
-  height: 0px;
+  height: 0;
   transform: translateX(-50%);
   background: black;
   border-radius: 999;
@@ -281,15 +306,15 @@ header {
 /* social - list */
 .social-list {
   display: flex;
-  gap: 30px;
+  gap: 1.875rem;
   align-items: flex-start;
   justify-content: start;
   padding: 0;
 }
 
 .social-list > * > * {
-  height: 60px;
-  width: 60px;
+  height: 3.75rem;
+  width: 3.75rem;
 }
 
 /* Animations */
@@ -397,10 +422,12 @@ header {
 .fs-primary-heading {
   font-size: var(--fs-primary-heading);
   line-height: 1.6;
+  min-width: max-content;
 }
 .fs-secondary-heading {
   font-size: var(--fs-secondary-heading);
   line-height: 1.1;
+  min-width: max-content;
 }
 .fs-body {
   font-size: var(--fs-body);
@@ -465,4 +492,40 @@ header {
   opacity: 1;
 
   animation: fadeIn 0.5s ease-in;
+}
+
+
+@media (max-width: 1550px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .product__container{
+    height: 70dvh;
+  }
+
+
+
+}
+
+@media (max-width: 1400px) {
+  html,
+  body {
+    font-size: 13px;
+  }
+
+
+  :root{
+
+    --fs-900: 4.50rem; /* 76 */
+    --fs-850: 4.3rem; /* 70 */
+    --fs-800: 3.0rem; /* 52 */
+    --fs-700: 1.5rem; /* 24 */
+  }
+
+  .product__container{
+    grid-column-gap: 5%;
+  }
+
 }
