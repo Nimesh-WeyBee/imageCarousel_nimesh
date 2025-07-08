@@ -16,7 +16,11 @@
       rel="stylesheet"
     />
   </head>
-  <body class="product-1-linearGreadent" data-productId="1">
+  <body class="" data-productId="1">
+    <div class=" product_linearGradient | activeBackground" id="product-1-linearGradient"></div>
+    <div class=" product_linearGradient" id="product-2-linearGradient"></div>
+    <div class=" product_linearGradient" id="product-3-linearGradient"></div>
+    <div class=" product_linearGradient" id="product-4-linearGradient"></div>
     <div class="body-container">
       <header>
         <div class="haeder-logoWrapper">
@@ -43,46 +47,80 @@
       </header>
 
       <main>
-        <div
-          class="product-haeding | text-neturla-100 fs-primary-heading fw-bold"
-        >
-          Exquisite Watches
-          <div class="product-subHeading | fs-secondary-heading fw-bold">
-            Choose Luxury, <span class="text-neturla-200">Choose Us</span>
+        <div class="product__container">
+          <div
+            class="product-haeding | text-neturla-100 fs-primary-heading fw-bold"
+          >
+            Exquisite Watches
+            <div class="product-subHeading | fs-secondary-heading fw-bold">
+              Choose Luxury, <span class="text-neturla-200">Choose Us</span>
+            </div>
           </div>
-        </div>
-        <p class="product-description | text-neturla-200 fs-body fw-regular">
-          Discover the Perfect Watch for Every Occasion and Elevate Your Style
-          with Timeless Elegance and Precision Craftsmanship - watch
-        </p>
-        <div class="product-price | fs-price fw-semi-bold text-neturla-100">
-          $430.00
-        </div>
-        <ul class="social-list | list-style-type-none">
-          <li>
-            <svg class="icon">
-              <use xlink:href="assets/companyImages/social-media.svg#facebook"></use>
-            </svg>
-          </li>
-          <li>
-            <svg class="icon">
-              <use xlink:href="assets/companyImages/social-media.svg#twiter"></use>
-            </svg>
-          </li>
-          <li>
-            <svg class="icon">
-              <use xlink:href="assets/companyImages/social-media.svg#youtube"></use>
-            </svg>
-          </li>
-        </ul>
-        <div class="product-image_wrapper">
-          <img src="assets/companyImages/left-arrow.svg" alt="view Previous product">
-          <img class="productImage" src="assets/productImages/product_1.png" alt="Stilish watch" >
-          <img src="assets/companyImages/right-arrow.svg" alt="view next product">
+          <p class="product-description | text-neturla-200 fs-body fw-regular">
+            Discover the Perfect Watch for Every Occasion and Elevate Your Style
+            with Timeless Elegance and Precision Craftsmanship - watch
+          </p>
+          <div class="product-price | fs-price fw-semi-bold text-neturla-100">
+            $430.00
+          </div>
+          <ul class="social-list | list-style-type-none">
+            <li>
+              <svg class="icon">
+                <use
+                  xlink:href="assets/companyImages/social-media.svg#facebook"
+                ></use>
+              </svg>
+            </li>
+            <li>
+              <svg class="icon">
+                <use
+                  xlink:href="assets/companyImages/social-media.svg#twiter"
+                ></use>
+              </svg>
+            </li>
+            <li>
+              <svg class="icon">
+                <use
+                  xlink:href="assets/companyImages/social-media.svg#youtube"
+                ></use>
+              </svg>
+            </li>
+          </ul>
+          <div class="product-image_wrapper">
+            <img
+              class="previous__btn"
+              src="assets/companyImages/left-arrow.svg"
+              alt="view Previous product"
+            />
+            <img
+              class="productImage product-1 activeImage"
+              src="assets/productImages/product_1.png"
+              alt="Stilish watch"
+            />
+            <img
+              class="productImage product-2"
+              src="assets/productImages/product_2.png"
+              alt="Stilish watch"
+            />
+            <img
+              class="productImage product-3"
+              src="assets/productImages/product_3.png"
+              alt="Stilish watch"
+            />
+            <img
+              class="productImage product-4"
+              src="assets/productImages/product_4.png"
+              alt="Stilish watch"
+            />
+            <img
+              class="next__btn"
+              src="assets/companyImages/right-arrow.svg"
+              alt="view next product"
+            />
+          </div>
         </div>
       </main>
     </div>
-
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
