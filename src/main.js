@@ -32,7 +32,34 @@ initProductImagesPositions();
 
 function activeProductImage() {
   productImage.forEach((img, index) => {
-    img.style.left = `${(index - (current_product - 1)) * 100}dvh`;
+    const duration = 1000;
+    const startLeft = parseFloat(img.style.left) || 0; // fallback to 0 if not set
+    const targetLeft = (index - (current_product - 1)) * 100;
+
+    let startTime = null;
+
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1); // cap at 1
+
+      // Apply easing (ease-in-out example)
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+
+      const currentLeft = startLeft + (targetLeft - startLeft) * ease;
+      img.style.left = `${currentLeft}dvh`;
+
+      if (elapsed < duration) {
+        requestAnimationFrame(animate);
+      } else {
+        img.style.left = `${targetLeft}dvh`; // Ensure exact final position
+      }
+    }
+
+    requestAnimationFrame(animate);
   });
 }
 

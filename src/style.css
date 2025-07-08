@@ -252,8 +252,8 @@ header {
 
 .productImage {
   position: absolute;
-  transition: left 1s ease;
-  animation: slideInOut 1s ease;
+  /* transition: left 1s ease; */
+  animation: slideInOut 5s ease-out;
   /* animation: slideInOut 3s cubic-bezier(0.4, 0, 1, 1.27); */
   /* animation-delay: .2s; */
 }
@@ -331,12 +331,16 @@ header {
 
 @keyframes slideInOut {
   0% {
-    transform: scale(1);
+    scale: 1;
     opacity: 1;
   }
   75% {
-    opacity: 0.6;
-    transform: scale(0.6);
+    opacity: .5;
+    scale: .8;
+  }
+  100% {
+    scale: 1;
+    opacity: 0;
   }
 }
 
@@ -448,9 +452,9 @@ header {
 
 .activeImage {
   position: relative;
-  left: 0;
-  opacity: 1;
-  animation: slideInOut 1s ease;
+  animation: slideInOut 5s ease-in;
+  /* left: 0; */
+  /* opacity: 1; */
   /* animation: slideInOut 1s cubic-bezier(0.4, 0, 1, 1.27); */
   /* animation: floating 2s ease-in-out infinite; */
 }
