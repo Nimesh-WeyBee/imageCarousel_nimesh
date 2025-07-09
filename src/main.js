@@ -30,78 +30,72 @@ initProductImagesPositions();
 
 // Move images next and pre
 
-function activeProductImage() {
-  productImage.forEach((img, index) => {
-    // Remove previous animation class if present
-    img.classList.remove("slideOut");
-    // Force reflow to restart animation
-    void img.offsetWidth;
-    // Add animation class
-    img.classList.add("slideOut");
+function animateProductImage(img, fromLeft, toLeft, animationClass, callback) {
+  img.classList.remove("slideIn", "slideOut");
+  void img.offsetWidth;
+  img.classList.add(animationClass);
 
-    const duration = 1000;
-    const startLeft = parseFloat(img.style.left) || 0; // fallback to 0 if not set
-    const targetLeft = (index - (current_product - 1)) * 100;
+  const duration = 1000;
+  let startTime = null;
 
-    let startTime = null;
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
 
-    function animate(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1); // cap at 1
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-      const ease =
-        progress < 0.5
-          ? 2 * progress * progress
-          : -1 + (4 - 2 * progress) * progress;
+    const ease =
+      progress < 0.5
+        ? 2 * progress * progress  
+        : -1 + (4 - 2 * progress) * progress; 
 
-      const currentLeft = startLeft + (targetLeft - startLeft) * ease;
-      img.style.left = `${currentLeft}dvw`; // <-- fix typo here
+    const currentLeft = fromLeft + (toLeft - fromLeft) * ease;
+    img.style.left = `${currentLeft}dvw`;
 
-      if (elapsed < duration) {
-        requestAnimationFrame(animate);
-      } else {
-        img.style.left = `${targetLeft}dvw`; // <-- fix typo here
-        // Remove animation class after animation ends
-        img.classList.remove("slideOut");
-        // img.classList.remove("activeImage");
-      }
+    if (elapsed < duration) {
+      requestAnimationFrame(animate);
+    } else {
+      img.style.left = `${toLeft}dvw`;
+      img.classList.remove(animationClass);
+      if (callback) callback();
     }
+  }
 
-    requestAnimationFrame(animate);
-  });
+  requestAnimationFrame(animate);
 }
 
 function showProduct(oldId, newId) {
   const old_productContainer = document.querySelector(`.product-${oldId}`);
   const new_productContainer = document.querySelector(`.product-${newId}`);
 
-  const productImage = document.querySelectorAll(".productImage");
-  const productHeading = document.querySelector(".product-heading");
-  const productDescription = document.querySelector(".product-description");
+  // Animate only the outgoing and incoming images
+  const oldImg = productImage[oldId - 1];
+  const newImg = productImage[newId - 1];
 
-  // setTimeout(() => {
+  // Remove activeImage from outgoing image before animation
   old_productContainer.classList.remove("activeImage");
-  // }, );
-  // old_productContainer.style.left = "100dvw"; // Move the old product out of view
 
-  // productImage.src = `./images/product_${current_product}.jpg`;
-  // productHeading.textContent = `Product ${current_product}`;
-  // productDescription.textContent = `This is the description for Product ${current_product}.`;
+  // Determine direction: next or previous
+  const direction =
+    newId > oldId || (oldId === max_products && newId === 1) ? 1 : -1;
 
+  // Animate old image out
+  animateProductImage(
+    oldImg,
+    0,
+    -100 * direction,
+    "slideOut"
+    // No callback needed for removing activeImage, already removed above
+  );
+
+  // Position new image just outside the frame, then animate in
+  newImg.style.left = `${100 * direction}dvw`;
   new_productContainer.classList.add("activeImage");
-  // new_productContainer.style.left = "0"; // Bring the new product into view
+  animateProductImage(newImg, 100 * direction, 0, "slideIn");
 
-  // setTimeout(() => {
-  activeProductImage();
-  // }, 50);
-
-  // setTimeout(() => {
   activeBackground();
-  // }, 100);
-
-  // body.dataset.productId = newId;
 }
+
 function nextProduct() {
   if (current_product < max_products) {
     current_product++;
