@@ -46,8 +46,8 @@ function animateProductImage(img, fromLeft, toLeft, animationClass, callback) {
 
     const ease =
       progress < 0.5
-        ? 2 * progress * progress  
-        : -1 + (4 - 2 * progress) * progress; 
+        ? 2 * progress * progress
+        : -1 + (4 - 2 * progress) * progress;
 
     const currentLeft = fromLeft + (toLeft - fromLeft) * ease;
     img.style.left = `${currentLeft}dvw`;
@@ -90,7 +90,9 @@ function showProduct(oldId, newId) {
 
   // Position new image just outside the frame, then animate in
   newImg.style.left = `${100 * direction}dvw`;
+
   new_productContainer.classList.add("activeImage");
+
   animateProductImage(newImg, 100 * direction, 0, "slideIn");
 
   activeBackground();

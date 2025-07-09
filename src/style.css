@@ -278,6 +278,10 @@ header {
 
   overflow: hidden;
 
+  /* overflow: visible; Hide this line */
+
+  /* outline: 3px solid purple; */
+
   margin-inline: auto;
 }
 
@@ -314,6 +318,7 @@ header {
 }
 
 .productImage {
+  /* outline: 6px solid lime; TODO: Remove THis lime */
   position: absolute;
   /* transition: left 1s ease; */
 }
@@ -321,10 +326,12 @@ header {
 /* Add this class for dynamic animation */
 .slideOut {
   animation: slideOut 1s ease-out;
+  /* position: relative; */
 }
 
 .slideIn {
   animation: slideIn 1s ease-in;
+  /* position: relative; */
 }
 
 .product-image_wrapper::after {
@@ -360,7 +367,6 @@ header {
   height: 3.75rem;
   width: 3.75rem;
 }
-
 
 /* Animations */
 
@@ -637,12 +643,13 @@ header {
   }
 
   .product-image_wrapper {
-    max-height: 54vh;
+    /* max-height: 54vh; */
     min-width: 30dvw;
+    max-width: 60dvw;
   }
   .productImage {
-    width: 80%;
-    height: 80%;
+    /* width: 80%; */
+    height: 100%;
     object-fit: cover;
     margin-inline: auto;
     align-self: flex-end;
@@ -714,8 +721,26 @@ header {
     padding: 0;
   }
 
+  .product-image_wrapper {
+    max-width: 65dvw;
+  }
+
   .productImage {
     min-width: 80%;
+  }
+}
+
+@media (max-width: 580px) {
+  :root {
+    font-size: 11px;
+  }
+
+  .product-image_wrapper {
+    max-width: 80dvw;
+  }
+
+  .product-haeding {
+    min-width: 0;
   }
 }
 
@@ -747,52 +772,25 @@ header {
 
     height: 100%;
   }
+
+  .product-image_wrapper {
+    max-width: 100dvw;
+  }
 }
-
-@media (max-width: 580px) {
-  :root {
-    font-size: 11px;
+@media (max-width: 400px) {
+  .navigation-btn {
+    display: none;
   }
-
-  .product-description {
-    /* max-height: 100px; */
-
-    /* hidding the scrollbar
-    overflow: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    } */
-  }
-
-  .product-haeding {
-    min-width: 0;
-  }
-  /*
-  .product-description {
-    font-size: var(--fs-body);
-  }
-
-  .product-price {
-    font-size: var(--fs-price);
-  }
-
-  .product-haeding,
-  .product-subHeading {
-    text-align: center;
-  } */
 }
 
 @media (max-width: 394px) {
   .productImage {
-    width: 86%;
-    height: 86%;
     margin-inline: auto;
   }
-}
 
-@media (max-width: 400px) {
-  .navigation-btn {
-    display: none;
+  .body-container {
+    padding: 0.5dvh 0.5dvw;
+    overflow: auto;
+    height: 95dvh;
   }
 }
