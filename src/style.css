@@ -319,8 +319,12 @@ header {
 }
 
 /* Add this class for dynamic animation */
-.slideIn {
+.slideOut {
   animation: slideOut 1s ease-out;
+}
+
+.slideIn {
+  animation: slideIn 1s ease-in;
 }
 
 .product-image_wrapper::after {

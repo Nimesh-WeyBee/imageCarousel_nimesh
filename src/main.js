@@ -33,11 +33,11 @@ initProductImagesPositions();
 function activeProductImage() {
   productImage.forEach((img, index) => {
     // Remove previous animation class if present
-    img.classList.remove("slideIn");
+    img.classList.remove("slideOut");
     // Force reflow to restart animation
     void img.offsetWidth;
     // Add animation class
-    img.classList.add("slideIn");
+    img.classList.add("slideOut");
 
     const duration = 1000;
     const startLeft = parseFloat(img.style.left) || 0; // fallback to 0 if not set
@@ -63,7 +63,7 @@ function activeProductImage() {
       } else {
         img.style.left = `${targetLeft}dvw`; // <-- fix typo here
         // Remove animation class after animation ends
-        img.classList.remove("slideIn");
+        img.classList.remove("slideOut");
         // img.classList.remove("activeImage");
       }
     }
